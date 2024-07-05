@@ -1,0 +1,50 @@
+plugins {
+    id 'java'
+    id 'org.liquibase.gradle' version '2.2.0'
+}
+
+group = 'com.lushnikova'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //db
+    implementation 'org.postgresql:postgresql:42.7.3'
+    implementation 'org.hibernate:hibernate-core:6.5.2.Final'
+    implementation 'org.liquibase:liquibase-core:4.19.0'
+
+    implementation 'org.springframework:spring-context:6.1.10'
+    implementation 'org.springframework.data:spring-data-jdbc:3.3.1'
+    implementation 'org.springframework.data:spring-data-jpa:3.3.1'
+
+    implementation 'org.projectlombok:lombok:1.18.34'
+    implementation 'org.mapstruct:mapstruct:1.5.5.Final'
+
+    //liquibase runtime
+    liquibaseRuntime 'org.liquibase:liquibase-core:4.19.0'
+    liquibaseRuntime 'org.liquibase:liquibase-groovy-dsl:3.0.2'
+    liquibaseRuntime 'org.postgresql:postgresql:42.7.3'
+    liquibaseRuntime 'com.fasterxml.jackson.core:jackson-databind:2.14.1'
+    liquibaseRuntime 'info.picocli:picocli:4.6.1'
+
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.mapstruct:mapstruct-processor:1.5.5.Final'
+
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.34'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.34'
+
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+apply plugin: "org.liquibase.gradle"
+
+
+test {
+    useJUnitPlatform()
+}
