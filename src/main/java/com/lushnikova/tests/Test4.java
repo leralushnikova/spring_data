@@ -1,7 +1,7 @@
 package com.lushnikova.tests;
 
 import com.lushnikova.jpa.config.AppConfig;
-import com.lushnikova.jpa.model.Person;
+import com.lushnikova.jpa.model.entity.Person;
 import com.lushnikova.jpa.repository.PersonRepository;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

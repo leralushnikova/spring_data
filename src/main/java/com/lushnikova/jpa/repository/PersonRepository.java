@@ -1,30 +1,36 @@
 package com.lushnikova.jpa.repository;
 
-import com.lushnikova.jpa.model.Person;
+import com.lushnikova.jpa.dto.PersonDTO;
+import com.lushnikova.jpa.model.entity.Person;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
-import java.util.List;
 
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Long> {
 
-    @Query(value = "select * from spring.public.people where first_name = :firstName",
-            nativeQuery = true)
-    List<Person> findByFirstName(@Param("firstName") String firstName);
+    Page<PersonDTO> findAllBy(Pageable pageable);
 
-    List<Person> findByLastNameOrderByFirstNameAsc(String lastname);
+//    @Query(value = "select * from spring.public.people where first_name = :firstName",
+//            nativeQuery = true)
+//    List<Person> findByFirstName(@Param("firstName") String firstName);
+//
+//    List<Person> findByLastNameOrderByFirstNameAsc(String lastname);
+//
+//
+//    //    @Query(value = "update spring.public.people set last_name = :newLastName where id = :id", nativeQuery = true)
+//    @Modifying
+//    @Query("update Person p set p.lastName = :newLastName where p.id = :id")
+//    void updateLastName(@Param("id") Long id,
+//                       @Param("newLastName") String newLastName);
 
-    @Modifying
-    @Query("update Person p set p.lastName = :newLastName where p.id = :id")
-//    @Query(value = "update spring.public.people set last_name = :newLastName where id = :id", nativeQuery = true)
-    void updateLastName(@Param("id") Long id,
-                       @Param("newLastName") String newLastName);
+//    Page<Person> findAllBy(Pageable pageable);
+//    Page<PersonDTO4> findAllBy(Pageable pageable);
 
-    Page<Person> findAllBy(Pageable pageable);
+//    Slice<Person> findAllBy(Pageable pageable);
+//    Slice<PersonDTO3> findAllBy(Pageable pageable);
+
+//    @Query("select new com.lushnikova.jpa.dto.dto2.PersonDTO2(p.id, p.firstName) from Person p where p.age > 50")
+//    List<PersonDTO2> findAlls();
 }

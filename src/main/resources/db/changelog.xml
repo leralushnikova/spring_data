@@ -6,4 +6,6 @@
 http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
 
     <include file="db/changelog/create_people.sql" relativeToChangelogFile="false"/>
+    <include file="db/changelog/add_birthdate.sql" relativeToChangelogFile="false"/>
+    <include file="db/changelog/create_ips.sql" relativeToChangelogFile="false"/>
 </databaseChangeLog>
